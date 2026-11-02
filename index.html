@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevCLub JokenPÔ</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="box">
+        <h1>Pedra, Papel, Tesoura(JokenPÔ)</h1>
+
+        <!-- NOVOS ELEMENTOS PARA EXIBIR AS MÃOS E ANIMAÇÕES -->
+        <div class="choices-display">
+            <!-- Container para a mão do jogador -->
+            <div class="player-hand-container">
+                <!-- Punho fechado para animação (inicialmente escondido, mas com emoji padrão) -->
+                <span id="player-shaking-fist" class="choice-emoji shaking-fist hidden">&#x270A;</span> 
+                <!-- Escolha final do jogador (inicialmente escondido) -->
+                <span id="player-choice-display" class="choice-emoji final-choice hidden"></span>
+            </div>
+
+            <!-- Container para a mão da CPU -->
+            <div class="cpu-hand-container">
+                <!-- Punho fechado para animação (inicialmente escondido, mas com emoji padrão) -->
+                <span id="cpu-shaking-fist" class="choice-emoji shaking-fist hidden">&#x270A;</span> 
+                <!-- Escolha final da CPU (inicialmente escondido) -->
+                <span id="cpu-choice-display" class="choice-emoji final-choice hidden"></span>
+            </div>
+        </div>
+        <!-- FIM DOS NOVOS ELEMENTOS -->
+
+        <div class="buttons">
+            <!-- Removendo os onclick para adicionar no JavaScript, conforme melhor prática -->
+            <button id="rock">&#x270A;</button>
+            <button id="paper">&#x1F590;</button>
+            <button id="scissors">&#x270C;</button>
+        </div>
+
+        <p class="result"></p>
+
+        <p class="your-score">Sua pontuação: <span id="human-score">0</span></p>
+        <p class="cpu-score">Pontuação da cpu: <span id="cpu-score">0</span></p>
+
+             <!-- NOVO ELEMENTO AQUI: Botão de Reiniciar -->
+        <button id="reset-button" class="hidden">Reiniciar Jogo</button> 
+        <!-- Ele começa escondido -->
+
+    </div>
+
+</body>
+
+    <script src="./scripts.js"></script>
+</html>

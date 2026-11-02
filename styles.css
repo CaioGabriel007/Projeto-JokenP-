@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Yuyu&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+body {
+    background: url("https://picsum.photos/1920/1080");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.box {
+    padding: 75px;
+    background-color:#A8BEBD;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Novo estilo para o container das escolhas */
+.choices-display {
+    display: flex;
+    gap: 50px; /* Espaço entre as mãos */
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* Altura para garantir que o layout não 'pule' */
+    margin-bottom: 20px;
+}
+
+/* Estilos para os containers individuais das mãos */
+.player-hand-container, .cpu-hand-container {
+    position: relative; /* Para posicionar os spans um sobre o outro */
+    width: 120px; /* Garante que o container tenha um tamanho fixo */
+    height: 120px;
+    display: flex; /* Para centralizar o emoji dentro do container */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para todos os emojis (sacudindo e final) */
+.choice-emoji {
+    font-size: 100px; /* Tamanho grande para o emoji */
+    position: absolute; /* Para que os emojis se sobreponham dentro do container */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o emoji (base) */
+    line-height: 1; /* Para evitar espaçamento extra */
+}
+
+/* ATUALIZADO: O punho sacudindo do jogador agora não tem inversão horizontal */
+#player-shaking-fist {
+    /* Apenas centraliza, sem scaleX(-1) */
+    transform: translate(-50%, -50%); 
+}
+
+/* ATUALIZADO: A escolha final do jogador agora não tem inversão horizontal, apenas rotação */
+#player-choice-display {
+    /* Combina a centralização com a rotação (mão direita apontando para a direita) */
+    transform: translate(-50%, -50%) rotate(90deg); 
+}
+
+/* A escolha da CPU permanece com a rotação para a esquerda (mão direita apontando para a esquerda) */
+#cpu-choice-display {
+    /* Combina a centralização com a rotação */
+    transform: translate(-50%, -50%) rotate(-90deg); 
+}
+
+/* Classe para esconder elementos */
+.hidden {
+    display: none !important; /* Use !important para garantir que sobrescreva outros estilos */
+}
+
+/* Animação de sacudir */
+@keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -55%) rotate(5deg); }
+    50% { transform: translate(-50%, -45%) rotate(-5deg); }
+    75% { transform: translate(-50%, -55%) rotate(5deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* Classe para aplicar a animação de sacudir */
+.is-shaking {
+    animation: shake 0.3s infinite alternate ease-in-out; /* Animação contínua */
+}
+
+button {
+    padding:20px;
+    font-size: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.buttons {
+    margin: 30px 0;
+    display: flex;
+    gap: 40px;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+#rock {
+    background-color: #FF3700;
+}
+
+#paper {
+    background-color: #8ADE0F;
+}
+
+#scissors {
+    background-color: #945CB4;
+}
+
+p{
+font-weight: bold;
+font-size: 25px;
+margin-bottom: 10px;
+}
+
+.your-score span{
+    color: green;
+}
+
+.cpu-score span{
+    color: yellow;
+}
+
+/* Opcional: Estilo para a fonte Yuyu */
+h1, p {
+    font-family: 'Yuyu', cursive;
+}
+
+/* NOVO ESTILO: Para o botão de reiniciar */
+#reset-button {
+    margin-top: 20px; /* Espaçamento acima do botão */
+    /* Herda padding, border-radius, cursor, transition de 'button' */
+    font-size: 25px; /* Ajusta o tamanho da fonte para o texto ser legível */
+    background-color: #A8BEBD; /* Reutiliza a cor de fundo da caixa, ou escolha outra da paleta */
+    color: #333; /* Cor do texto para contraste */
+}
+/* Efeito hover já será aplicado pela regra geral 'button:hover' (opacidade) */
+/* Adicione este bloco no FINAL do seu arquivo CSS (após todas as outras regras) */
+
+
+/* Media Query principal: Para telas de 1050px de largura ou menores */
+@media screen and (max-width: 1050px) {
+    .box {
+        max-width: 900px; /* Define um limite para o box dentro desta faixa */
+        width: 90%;      /* O box ocupa 90% da largura disponível, até o max-width de 900px */
+        padding: 60px;   /* Reduz o padding */
+        gap: 18px;       /* Ajusta o gap */
+    }
+
+    h1 {
+        font-size: 38px; /* Reduz o tamanho do título */
+    }
+
+    p {
+        font-size: 22px; /* Reduz o tamanho dos parágrafos */
+    }
+
+    .choices-display {
+        gap: 40px;      /* Reduz o espaço entre as mãos */
+        height: 130px;  /* Ajusta a altura */
+        margin-bottom: 18px;
+    }
+
+    .player-hand-container, .cpu-hand-container {
+        width: 110px;   /* Reduz as dimensões das mãos */
+        height: 110px;
+    }
+
+    .choice-emoji {
+        font-size: 90px; /* Reduz o tamanho dos emojis */
+    }
+
+    .buttons {
+        gap: 30px; /* Reduz o espaço entre os botões */
+        margin: 25px 0;
+    }
+
+    button {
+        padding: 18px;     /* Reduz o padding dos botões */
+        font-size: 45px;   /* Reduz o tamanho da fonte */
+        border-radius: 20px; /* Reduz o border-radius */
+    }
+
+    #reset-button {
+        font-size: 22px; /* Ajusta o tamanho da fonte do botão de reiniciar */
+    }
+}
+
+/* IMPORTANTE: Para telas de celular, ainda é bom ter um breakpoint mais agressivo */
+/* para empilhar os elementos, pois 1050px é muito largo para empilhar tudo. */
+@media screen and (max-width: 600px) { /* Exemplo: para tablets pequenos e celulares */
+    .box {
+        padding: 25px; /* Reduz ainda mais o padding */
+        gap: 10px;     /* Ajusta o gap */
+    }
+
+    h1 {
+        font-size: 28px; /* Reduz ainda mais o título */
+    }
+
+    p {
+        font-size: 16px; /* Reduz ainda mais os parágrafos */
+    }
+
+    .choices-display {
+        flex-direction: row; 
+        gap: 15px; /* Espaço entre as mãos empilhadas */
+        height: auto; /* Deixa a altura se ajustar automaticamente */
+    }
+
+    .player-hand-container, .cpu-hand-container {
+        width: 80px; /* Reduz o container da mão */
+        height: 80px;
+    }
+
+    .choice-emoji {
+        font-size: 55px; /* Reduz ainda mais os emojis */
+    }
+
+    .buttons {
+        flex-direction: row; 
+        gap: 10px; /* Espaço entre os botões empilhados */
+        margin: 15px 0;
+    }
+
+    button {
+        width: 100%; /* Faz os botões ocuparem toda a largura disponível */
+        padding: 12px; /* Reduz o padding */
+        font-size: 30px; /* Ajusta a fonte do botão */
+    }
+
+    #reset-button {
+        font-size: 16px; /* Ajusta o tamanho da fonte do botão de reiniciar */
+        width: 80%; /* Para não ocupar 100% da largura, mas ficar centralizado */
+    }
+}
+
+
